@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700');
+@font-face {
+    font-family: 'Chess Normal';
+    src: url(/assets/font/chess.normal.ttf);
+}
+
+@font-face {
+    font-family: 'Chess Special';
+    src: url(/assets/font/chess.special.ttf);
+}
+
+$board-size: calc(100vh - 50px);
+$side-size: calc(100vw - calc(100vh - 50px));
+$g1: #1E1E1E;
+$g2: darken($g1,
+10%);
+$g3: darken($g1,
+20%);
+$g4: lighten($g1,
+5%);
+$b1: #327CCB;
+$b2: rgb(112,
+181,
+255);
+$t1: white;
+body {
+    margin: 0;
+    font-family: Source Sans Pro;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+    color: $t1;
+    background: $g1;
+    width: 100vw;
+    height: 100vh;
+}
+
+a {
+    color: $b1;
+    text-decoration: none;
+}
+
+* {
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+*.chess {
+    font-family: 'Chess Normal';
+}
+
+*.easing {
+    transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+div.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 50px 0 0 0;
+    overflow: auto;
+}

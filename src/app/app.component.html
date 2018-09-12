@@ -1,0 +1,47 @@
+<header>
+    <div class="nav">
+        <div class="brand" routerLink="/">
+            <img src="/assets/img/me.jpg" class="brand-img" />
+            <h1>Chris Cates<span class="no-mobile">, RLAI Chess with Typescript</span></h1>
+        </div>
+    </div>
+
+    <a class="mobile-nav-toggle easing" [ngClass]="{'active': this.navActive}" (click)="this.navActive = !this.navActive;">
+        <i class="fa fa-bars"></i>
+    </a>
+
+    <div class="social">
+        <a class="social-link easing" href="https://github.com/ChrisCates" target="_blank">
+            <i class="fab fa-github-square"></i>
+        </a>
+        <a class="social-link easing" href="https://medium.com/@yoitschriscates" target="_blank">
+            <i class="fab fa-medium"></i>
+        </a>
+        <a class="social-link easing" href="https://linkedin.com/in/itsChrisCates" target="_blank">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a class="social-link easing" href="https://chriscates.ca" target="_blank">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+</header>
+
+<div class="mobile-nav easing" [ngClass]="{'active': this.navActive}">
+    <div class="social">
+        <a class="social-link easing" href="https://github.com/ChrisCates" target="_blank">
+            <i class="fab fa-github-square"></i> @ChrisCates
+        </a>
+        <a class="social-link easing" href="https://medium.com/@yoitschriscates" target="_blank">
+            <i class="fab fa-medium"></i> @YoItsChrisCates
+        </a>
+        <a class="social-link easing" href="https://linkedin.com/in/itsChrisCates" target="_blank">
+            <i class="fab fa-linkedin"></i> @ItsChrisCates
+        </a>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<footer>
+
+</footer>

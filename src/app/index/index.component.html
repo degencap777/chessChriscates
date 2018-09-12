@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="main-row">
+        <div class="board">
+            <div class="row" *ngFor="let row of this.display;">
+                <div class="square" *ngFor="let item of row;">
+                    <span class="position">{{item.square}}</span>
+                    <img src="/assets/chess/{{item.piece.img}}.svg" class="chess piece" [ngClass]="{'visible': item.piece.img}" />
+                </div>
+            </div>
+        </div>
+        <div class="right-row">
+            <div class="game-info">
+                <div class="game-info-section">
+                    <p class="label">Turn</p>
+                    <img src="/assets/chess/{{this.turn}}-pawn.svg" class="label-img" />
+                </div>
+                <div class="game-info-section">
+                    <p class="label">Moves</p>
+                    <h2>{{this.totalMoves}}</h2>
+                </div>
+                <div class="game-info-section">
+                    <p class="label"><i class="fas fa-clock"></i> AI</p>
+                    <h2>{{this.aiTime}}s</h2>
+                </div>
+                <div class="game-info-section">
+                    <p class="label"><i class="fas fa-clock"></i> Human</p>
+                    <h2>{{this.humanTime}}s</h2>
+                </div>
+            </div>
+            <div class="move-list">
+                <div class="move-list-title">
+                    <h2>Moves Done</h2>
+                </div>
+            </div>
+
+            <div class="game-info">
+                <div class="game-info-section section-flex">
+                    <p class="label">
+                        <img src="/assets/chess/w-pawn.svg" /> taken
+                    </p>
+                </div>
+            </div>
+            <div class="game-info">
+                <div class="game-info-section section-flex">
+                    <p class="label">
+                        <img src="/assets/chess/b-pawn.svg" /> taken
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
