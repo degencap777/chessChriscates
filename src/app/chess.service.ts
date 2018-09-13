@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import * as Chess from 'oop-chess';
+
+import { default as Chess } from 'chess.js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChessService {
-  
-  public game = Chess;
-  public move = null;
-  public status = null;
+
+  public game = Chess();
 
   constructor() {
-    this.game.init('P1', 'P2');
+
   }
 
 }

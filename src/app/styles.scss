@@ -9,8 +9,8 @@
     src: url(/assets/font/chess.special.ttf);
 }
 
-$board-size: calc(100vh - 50px);
-$side-size: calc(100vw - calc(100vh - 50px));
+$board-size: 700px;
+$side-size: 500px;
 $g1: #1E1E1E;
 $g2: darken($g1,
 10%);
@@ -54,7 +54,11 @@ a {
 
 div.container {
     width: 100vw;
-    height: 100vh;
     padding: 50px 0 0 0;
     overflow: auto;
+    div.chess-board {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+    }
 }

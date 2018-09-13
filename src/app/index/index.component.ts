@@ -8,15 +8,21 @@ import { ChessService } from '../chess.service';
 })
 export class IndexComponent implements OnInit {
   public display = [];
+  public availableMoves = [];
 
   public totalMoves = 0;
-  public turn = 'white';
+  public turn = 'w';
 
   public whiteTaken = [];
   public blackTaken = [];
 
   public aiTime = 0;
   public humanTime = 0;
+
+  public check = 'no';
+  public checkmate = 'no';
+  public draw = 'no';
+  public stalemate = 'no';
 
   constructor(public chess: ChessService) {
 
@@ -25,29 +31,42 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.render();
     this.getInfo();
-    console.log(this.chess.game);
   }
 
   getInfo() {
-    this.totalMoves = this.chess.game.NrOfmoves;
-    this.turn = this.chess.game.turn.substr(0,1);
-    this.whiteTaken = this.chess.game['p1']['takesPieces'];
-    this.blackTaken = this.chess.game['p2']['takesPieces'];
+    console.log(this.chess.game);
+    console.log(this.chess.game.moves({ square: 'e2', verbose: true }));
+
+    this.turn = this.chess.game.turn();
+    this.check = this.chess.game.in_check() === true ? 'yes' : 'no';
+    this.checkmate = this.chess.game.in_checkmate() === true ? 'yes' : 'no';
+    this.draw = this.chess.game.in_draw() === true ? 'yes' : 'no';
+    this.stalemate = this.chess.game.in_stalemate() === true ? 'yes' : 'no';
   }
 
   render() {
-    Object.keys(this.chess.game.gameBoard).forEach(key => {
-      const row = this.chess.game.gameBoard[key];
-      const displayArray = [];
-      row.forEach((item, i) => {
-        if (i > 0) {
-          displayArray.push(item);
-        }
-      });
-      this.display.unshift(displayArray);
-    });
+    const squares = this.chess.game.SQUARES;
+    const rows = [];
 
-    console.log(this.display);
+    for (let i = 0; i < squares.length; i = i + 8) {
+      rows.push(squares.slice(i, i + 8));
+    }
+    
+    rows.forEach(row => {
+      const notation = [];
+
+      row.forEach(square => {
+        let status = this.chess.game.get(square);
+        
+        if (!status) {
+          status = { type: null, color: null };
+        }
+
+        notation.push({ square, status });
+      });
+
+      this.display.push(notation);
+    });
   }
 
 }
