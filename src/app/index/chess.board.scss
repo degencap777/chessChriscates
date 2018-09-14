@@ -1,6 +1,7 @@
 @import "../styles.scss";
 $wt: lighten($b1, 20%);
 $bt: darken($b1, 20%);
+$as: lighten($b1, 40%);
 div.board {
     width: $board-size;
     height: $board-size;
@@ -45,9 +46,89 @@ div.board {
             img.piece {
                 display: none;
                 &.visible {
+                    position: relative;
+                    z-index: 11;
                     display: block;
                     width: 40%;
                     height: 40%;
+                }
+            }
+            div.gradient-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                &.activeSquare {
+                    @keyframes gradient {
+                        0% {
+                            opacity: 0;
+                        }
+                        50% {
+                            opacity: 0.5;
+                        }
+                        100% {
+                            opacity: 0;
+                        }
+                    }
+                    display: block;
+                    background: $as;
+                    animation-name: gradient;
+                    animation-duration: 2s;
+                    animation-iteration-count: infinite;
+                    animation-timing-function: linear;
+                }
+            }
+            div.blip-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                div.blip {
+                    position: absolute;
+                    left: 45%;
+                    top: 45%;
+                    width: 10%;
+                    height: 10%;
+                    border-radius: 50%;
+                    background: white;
+                    opacity: 0.5;
+                    display: none;
+                }
+                &.possibleMove {
+                    div.blip {
+                        @keyframes blip {
+                            0% {
+                                opacity: 0;
+                                left: 45%;
+                                top: 45%;
+                                width: 10%;
+                                height: 10%;
+                            }
+                            50% {
+                                opacity: 0.25;
+                                left: 25%;
+                                top: 25%;
+                                width: 50%;
+                                height: 50%;
+                            }
+                            100% {
+                                opacity: 0;
+                                left: 5%;
+                                top: 5%;
+                                width: 90%;
+                                height: 90%;
+                            }
+                        }
+                        display: block;
+                        animation-name: blip;
+                        animation-duration: 2s;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: linear;
+                    }
                 }
             }
         }

@@ -10,7 +10,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background: $g2;
-    border-bottom: 2px solid $g2;
+    border-bottom: 2px solid $g1;
     position: fixed;
     left: 0;
     top: 0;
@@ -39,6 +39,24 @@ header {
             width: 50px;
             height: 50px;
             font-size: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            &:hover {
+                background: $b1;
+            }
+        }
+        a.article-link {
+            width: auto;
+            padding: 0 15px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            i {
+                margin-left: 10px;
+                font-size: 25px;
+            }
             display: flex;
             align-items: center;
             justify-content: center;
@@ -76,6 +94,7 @@ div.mobile-nav {
     background: $g2;
     color: white;
     overflow-y: auto;
+    z-index: 999;
     &.active {
         right: 0;
     }
@@ -147,6 +166,108 @@ a.mobile-nav-toggle {
         }
         a.mobile-nav-toggle {
             display: flex;
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    background: black;
+    border-top: 2px solid $g1;
+    padding: 50px 0;
+    div.footer-brand {
+        width: 100%;
+        max-width: 1200px;
+        padding: 15px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        div.footer-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        @media (max-width: 600px) {
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: none;
+            div.footer-images {
+                margin-bottom: 30px;
+            }
+            h3 {
+                display: block;
+                text-align: center;
+                width: 100%;
+                font-size: 14px;
+            }
+        }
+    }
+    div.footer-columns {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        div.column {
+            width: 50%;
+            padding: 15px;
+            @media (max-width: 600px) {
+                width: 100%;
+            }
+            div.algo-description {
+                padding: 15px;
+                p {
+                    font-size: 24px;
+                    text-align: center;
+                }
+                @media (max-width: 600px) {
+                    p {
+                        font-size: 14px;
+                    }
+                }
+            }
+            div.algo {
+                font-size: 32px;
+                margin-bottom: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @media (max-width: 600px) {
+                    font-size: 18px;
+                }
+            }
+            div.links {
+                padding: 15px 0;
+                a {
+                    display: block;
+                    margin-bottom: 15px;
+                    color: white;
+                    font-size: 24px;
+                    i {
+                        margin-right: 5px;
+                    }
+                    &:hover {
+                        color: $b1;
+                    }
+                }
+                @media (max-width: 600px) {
+                    width: 100%;
+                    a {
+                        font-size: 18px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 600px) {
+        div.footer-columns {
+            display: block;
         }
     }
 }

@@ -24,6 +24,8 @@
         "chess.js": "^0.10.2",
         "core-js": "^2.5.4",
         "crypto": "^1.0.1",
+        "moment": "^2.22.2",
+        "ng-katex": "^1.0.3",
         "ng2-chessboard": "^1.0.3",
         "rxjs": "^6.0.0",
         "zone.js": "^0.8.26"

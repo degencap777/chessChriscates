@@ -3,7 +3,15 @@
         <div class="main-row">
             <div class="board">
                 <div class="row" *ngFor="let row of this.display;">
-                    <div class="square" *ngFor="let item of row;">
+                    <div class="square" *ngFor="let item of row;" (click)="this.action(item);">
+                        <div class="blip-container" [ngClass]="{'possibleMove': this.activeMoves.indexOf(item.square) > -1}">
+                            <div class="blip"></div>
+                            <div class="blip"></div>
+                            <div class="blip"></div>
+                        </div>
+                        <div class="gradient-container" [ngClass]="{'activeSquare': this.activeSquare == item.square}">
+
+                        </div>
                         <span class="position">{{item.square}}</span>
                         <img src="/assets/chess/{{item.status.color}}-{{item.status.type}}.svg" class="chess piece" [ngClass]="{'visible': item.status.type}" />
                     </div>
@@ -13,7 +21,7 @@
                 <div class="game-info">
                     <div class="game-info-section">
                         <p class="label">Turn</p>
-                        <img src="/assets/chess/{{this.turn}}-pawn.svg" class="label-img" />
+                        <img src="/assets/chess/{{this.turn}}-p.svg" class="label-img" />
                     </div>
                     <div class="game-info-section">
                         <p class="label">Moves</p>
@@ -38,7 +46,22 @@
                 </div>
                 <div class="move-list">
                     <div class="move-list-title">
-                        <h2>Moves Done</h2>
+                        <h2>Move History</h2>
+                    </div>
+                    <div class="moves-container">
+                        <div class="move easing" *ngFor="let move of this.moveHistory;">
+                            <img src="/assets/chess/{{move.color}}-{{move.piece}}.svg" class="chess piece" />
+                            <p>
+                                at {{move.time}} moved from {{move.from}} to {{move.to}}
+                            </p>
+                            <div class="move-capture" [ngClass]="{'active': move.captured}">
+                                <img src="/assets/chess/{{move.color}}-{{move.piece}}.svg" class="chess piece" />
+                                <p>
+                                    captured
+                                </p>
+                                <img src="/assets/chess/{{this.invertedColor(move.color)}}-{{move.captured}}.svg" class="chess piece" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,38 +82,4 @@
             </div>
         </div>
     </div>
-
-    <div class="footer">
-        <div class="footer-brand">
-            <img src="/assets/img/me.jpg" class="brand-img" />
-            <img src="/assets/img/lambda.png" class="brand-img" />
-            <h3>By Chris Cates, 2018</h3>
-        </div>
-        <div class="columns">
-            <div class="column">
-                <div class="links">
-                    <a href="https://github.com/ChrisCates/chess-ai.ts" target="_blank" class="easing">
-                        <i class="fab fa-github-square"></i> Source Code on Github
-                    </a>
-                    <a href="https://github.com/mvrahden/reinforce-js" target="_blank" class="easing">
-                        <i class="fab fa-github-square"></i> RL Engine on Github
-                    </a>
-                    <a href="https://github.com/jhlywa/chess.js/" target="_blank" class="easing">
-                        <i class="fab fa-github-square"></i> Chess Engine on Github
-                    </a>
-                </div>
-            </div>
-            <div class="column">
-                <div class="links">
-                    <a href="https://chriscates.ca/a/chess" target="_blank" class="easing">
-                        <i class="far fa-newspaper"></i> Article on ChrisCates.ca
-                    </a>
-                    <a href="https://udacity.com" target="_blank" class="easing">
-                        <i class="fas fa-graduation-cap"></i> Learn ML on your own
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>

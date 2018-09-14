@@ -1,8 +1,6 @@
 @import "../styles.scss";
 @import "./chess.board.scss";
 div.game-info {
-    border-top: 2px solid $g1;
-    border-bottom: 2px solid $g1;
     background: $g4;
     width: 100%;
     height: 75px;
@@ -15,8 +13,8 @@ div.game-info {
         width: 75px;
         height: 100%;
         border-right: 2px solid $g1;
-        &:first-of-type {
-            border-left: 2px solid $g1;
+        &:last-of-type {
+            border-right: 2px solid transparent;
         }
         display: flex;
         flex-direction: column;
@@ -54,6 +52,7 @@ div.main-row {
     display: flex;
     flex-direction: row;
     width: 100%;
+    margin: auto;
 }
 
 div.right-row {
@@ -78,47 +77,32 @@ div.move-list {
             font-weight: 400;
         }
     }
-}
-
-div.footer {
-    width: 100%;
-    height: 300px;
-    background: black;
-    div.footer-brand {
+    div.moves-container {
         width: 100%;
-        max-width: 1200px;
-        padding: 15px;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-    }
-    div.columns {
-        width: 100%;
-        max-width: 1200px;
-        margin: auto;
-        padding: 15px;
-        display: flex;
-        div.column {
-            width: 50%;
-            div.links {
-                padding: 15px 0;
-                a {
-                    display: block;
-                    margin-bottom: 15px;
-                    color: white;
-                    font-size: 24px;
-                    i {
-                        margin-right: 5px;
-                    }
-                    &:hover {
-                        color: $b1;
-                    }
+        height: calc(100% - 50px);
+        overflow: auto;
+        div.move {
+            padding: 15px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            img {
+                width: 15px;
+                height: 15px;
+                margin-right: 5px;
+            }
+            p {
+                font-size: 14px;
+                margin-right: 5px;
+                font-weight: bold;
+            }
+            div.move-capture {
+                padding: 0 15px;
+                display: none;
+                flex-direction: row;
+                align-items: center;
+                &.active {
+                    display: flex;
                 }
             }
         }

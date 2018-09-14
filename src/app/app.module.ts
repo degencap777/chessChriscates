@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { KatexModule } from 'ng-katex';
 
 import { ChessService } from './chess.service';
 
@@ -16,6 +17,7 @@ import { IndexComponent } from './index/index.component';
   imports: [
     BrowserModule,
     FormsModule,
+    KatexModule,
     RouterModule.forRoot([
       {
         'path': '',
