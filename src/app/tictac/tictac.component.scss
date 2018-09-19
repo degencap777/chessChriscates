@@ -1,0 +1,147 @@
+@import "../styles.scss";
+
+div.tic-tac-header {
+    width: 100%;
+    height: 70px;
+    border-bottom: 2px solid $g1;
+    div.header-wrapper {
+        width: 100%;
+        max-width: 700px;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+
+        div.header-section {
+            height: 100%;
+            display: flex;
+        }
+
+        a.tic-tac-button {
+            width: 70px;
+            height: 100%;
+            color: white;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            
+            p.label {
+                font-size: 16px;
+                font-weight: bold;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: 10;
+                width: 100%;
+                text-align :center;
+            }
+
+            i {
+                padding-top: 5px;
+                font-size: 18px;
+            }
+
+            &:hover {
+                background: $b1;
+            }
+        }
+
+        div.tic-tac-info {
+            position: relative;
+            width: 70px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+
+            p.label {
+                font-size: 16px;
+                font-weight: bold;
+                position: absolute;
+                left: 5px;
+                top: 0px;
+                z-index: 10;
+            }
+
+            div.image-wrap {
+                width: 50px;
+                height: 50px;
+                overflow: hidden;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                left: calc(50% - 25px);
+                top: calc(50% - 25px);
+                img {
+                    height: 150%;
+                }
+
+                opacity: 0;
+                &.active {
+                    opacity: 1;
+                }
+            }
+
+        }
+    }
+}
+
+div.tic-tac {
+    margin: auto;
+    width: $board-size;
+    height: $board-size;
+    div.row {
+        width: 100%;
+        height: calc(100% / 3);
+        border-bottom: 2px solid black;
+        &:last-of-type {
+            border-bottom: none;
+        }
+
+        display: flex;
+        flex-direction: row;
+
+        div.square {
+            width: calc(100% / 3);
+            height: 100%;
+            border-right: 2px solid black;
+            position: relative;
+
+            &:last-of-type {
+                border-right: none;
+            }
+            cursor: pointer;
+            &:hover {
+                background: $g1;
+            }
+
+            div.image-wrap {
+                width: 80px;
+                height: 80px;
+                overflow: hidden;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                left: calc(50% - 40px);
+                top: calc(50% - 40px);
+                img {
+                    height: 150%;
+                }
+
+                opacity: 0;
+                pointer-events: none;
+
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

@@ -8,21 +8,21 @@ import { ChessService } from './chess.service';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
+import { TictacComponent } from './tictac/tictac.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent
+    IndexComponent,
+    TictacComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     KatexModule,
     RouterModule.forRoot([
-      {
-        'path': '',
-        'component': IndexComponent
-      }
+      { 'path': '', 'component': IndexComponent },
+      { 'path': 'tictac', 'component': TictacComponent }
     ])
   ],
   providers: [ChessService],

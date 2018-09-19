@@ -1,18 +1,16 @@
-$board-size: 700px;
-$side-size: 500px;
+$board-size: 500px;
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700');
+
 $g1: #1E1E1E;
-$g2: darken($g1,
-10%);
-$g3: darken($g1,
-20%);
-$g4: lighten($g1,
-10%);
+$g2: darken($g1, 10%);
+$g3: darken($g1, 20%);
+$g4: lighten($g1, 10%);
+
 $b1: #327CCB;
-$b2: rgb(112,
-181,
-255);
+$b2: rgb(112, 181, 255);
+
 $t1: white;
+
 body {
     margin: 0;
     font-family: Source Sans Pro;
@@ -46,10 +44,9 @@ a {
 
 div.container {
     width: 100%;
-    max-width: 1200px;
+    min-height: calc(100vh - 350px);
+    background: $g4;
     height: auto;
     margin: auto;
     padding: 50px 0 0 0;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
 }

@@ -1,6 +1,34 @@
 <div class="container">
     <div class="chess-board">
         <div class="main-row">
+
+            <div class="game-info">
+                <div class="game-info-section">
+                    <p class="label">Turn</p>
+                    <img src="/assets/chess/{{this.turn}}-p.svg" class="label-img" />
+                </div>
+                <div class="game-info-section">
+                    <p class="label">Moves</p>
+                    <h2>{{this.totalMoves}}</h2>
+                </div>
+                <div class="game-info-section">
+                    <p class="label"><i class="fas fa-clock"></i> AI</p>
+                    <h2>{{this.aiTime}}s</h2>
+                </div>
+                <div class="game-info-section">
+                    <p class="label"><i class="fas fa-clock"></i> Human</p>
+                    <h2>{{this.humanTime}}s</h2>
+                </div>
+                <div class="game-info-section">
+                    <p class="label"><img src="/assets/chess/w-q.svg" /> Check</p>
+                    <h2>{{this.check}}</h2>
+                </div>
+                <div class="game-info-section">
+                    <p class="label"><img src="/assets/chess/w-k.svg" /> Mate</p>
+                    <h2>{{this.checkmate}}</h2>
+                </div>
+            </div>
+
             <div class="board">
                 <div class="row" *ngFor="let row of this.display;">
                     <div class="square" *ngFor="let item of row;" (click)="this.action(item);">
@@ -17,69 +45,28 @@
                     </div>
                 </div>
             </div>
-            <div class="right-row">
-                <div class="game-info">
-                    <div class="game-info-section">
-                        <p class="label">Turn</p>
-                        <img src="/assets/chess/{{this.turn}}-p.svg" class="label-img" />
-                    </div>
-                    <div class="game-info-section">
-                        <p class="label">Moves</p>
-                        <h2>{{this.totalMoves}}</h2>
-                    </div>
-                    <div class="game-info-section">
-                        <p class="label"><i class="fas fa-clock"></i> AI</p>
-                        <h2>{{this.aiTime}}s</h2>
-                    </div>
-                    <div class="game-info-section">
-                        <p class="label"><i class="fas fa-clock"></i> Human</p>
-                        <h2>{{this.humanTime}}s</h2>
-                    </div>
-                    <div class="game-info-section">
-                        <p class="label"><img src="/assets/chess/w-q.svg" /> Check</p>
-                        <h2>{{this.check}}</h2>
-                    </div>
-                    <div class="game-info-section">
-                        <p class="label"><img src="/assets/chess/w-k.svg" /> Mate</p>
-                        <h2>{{this.checkmate}}</h2>
-                    </div>
+
+            <div class="move-list">
+                <div class="move-list-title">
+                    <h2>Move History</h2>
                 </div>
-                <div class="move-list">
-                    <div class="move-list-title">
-                        <h2>Move History</h2>
-                    </div>
-                    <div class="moves-container">
-                        <div class="move easing" *ngFor="let move of this.moveHistory;">
+                <div class="moves-container">
+                    <div class="move easing" *ngFor="let move of this.moveHistory;">
+                        <img src="/assets/chess/{{move.color}}-{{move.piece}}.svg" class="chess piece" />
+                        <p>
+                            at {{move.time}} moved from {{move.from}} to {{move.to}}
+                        </p>
+                        <div class="move-capture" [ngClass]="{'active': move.captured}">
                             <img src="/assets/chess/{{move.color}}-{{move.piece}}.svg" class="chess piece" />
                             <p>
-                                at {{move.time}} moved from {{move.from}} to {{move.to}}
+                                captured
                             </p>
-                            <div class="move-capture" [ngClass]="{'active': move.captured}">
-                                <img src="/assets/chess/{{move.color}}-{{move.piece}}.svg" class="chess piece" />
-                                <p>
-                                    captured
-                                </p>
-                                <img src="/assets/chess/{{this.invertedColor(move.color)}}-{{move.captured}}.svg" class="chess piece" />
-                            </div>
+                            <img src="/assets/chess/{{this.invertedColor(move.color)}}-{{move.captured}}.svg" class="chess piece" />
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="game-info">
-            <div class="game-info-section section-flex">
-                <p class="label">
-                    <img src="/assets/chess/w-p.svg" /> taken
-                </p>
-            </div>
-        </div>
-        <div class="game-info">
-            <div class="game-info-section section-flex">
-                <p class="label">
-                    <img src="/assets/chess/b-p.svg" /> taken
-                </p>
-            </div>
         </div>
     </div>
 </div>

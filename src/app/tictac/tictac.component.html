@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="tic-tac-header">
+    <div class="header-wrapper">
+
+      <div class="header-section">
+        <div class="tic-tac-info">
+            <p class="label">Turn</p>
+            <div class="image-wrap easing" [ngClass]="{ 'active': this.turn == 0 }">
+              <img src="/assets/img/schoolboyq.gif"/>
+            </div>
+            <div class="image-wrap easing" [ngClass]="{ 'active': this.turn == 1 }">
+              <img src="/assets/img/elonmusk.gif"/>
+            </div>
+          </div>
+    
+          <div class="tic-tac-info">
+              <p class="label">Winner</p>
+              <div class="image-wrap easing" [ngClass]="{ 'active': this.winner == 0 }">
+                <img src="/assets/img/schoolboyq.gif"/>
+              </div>
+              <div class="image-wrap easing" [ngClass]="{ 'active': this.winner == 1 }">
+                <img src="/assets/img/elonmusk.gif"/>
+              </div>
+            </div>
+        </div>
+
+        <div class="header-section">
+            <a class="tic-tac-button easing" (click)="this.undo();">
+              <p class="label">Undo</p>
+              <i class="fas fa-undo"></i>
+            </a>
+            <a class="tic-tac-button easing" (click)="this.createBoard();">
+              <p class="label">Reset</p>
+              <i class="fas fa-power-off"></i>
+            </a>
+        </div>
+
+      </div>
+
+  </div>
+  <div class="tic-tac">
+    <div class="row" *ngFor="let row of this.board;">
+      <div class="square easing" *ngFor="let square of row;" (click)="this.selectSquare(square);">
+        <div class="image-wrap easing" [ngClass]="{ 'active': square.value == 0 }">
+          <img src="/assets/img/schoolboyq.gif"/>
+        </div>
+        <div class="image-wrap easing" [ngClass]="{ 'active': square.value == 1 }">
+          <img src="/assets/img/elonmusk.gif"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

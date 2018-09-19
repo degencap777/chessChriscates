@@ -1,7 +1,9 @@
 @import "../styles.scss";
 @import "./chess.board.scss";
+
 div.game-info {
     background: $g4;
+    border-bottom: 2px solid $g1;
     width: 100%;
     height: 75px;
     position: relative;
@@ -49,29 +51,29 @@ div.game-info {
 }
 
 div.main-row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+    display: block;
+    width: auto;
     margin: auto;
 }
 
 div.right-row {
-    width: 100%;
-    max-width: $side-size;
+    width: auto;
     height: 100%;
 }
 
 div.move-list {
     width: 100%;
-    height: calc(100vh - 293px);
+    height: 400px;
     background: $g4;
     div.move-list-title {
         width: 100%;
         height: 50px;
         display: flex;
         align-items: center;
+        justify-content: center;
         padding: 15px;
-        background: $g1;
+        border-top: 2px solid $g1;
+        border-bottom: 2px solid $g1;
         h2 {
             font-size: 24px;
             font-weight: 400;
@@ -79,6 +81,8 @@ div.move-list {
     }
     div.moves-container {
         width: 100%;
+        max-width: 500px;
+        margin: auto;
         height: calc(100% - 50px);
         overflow: auto;
         div.move {

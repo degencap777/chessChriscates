@@ -1,9 +1,11 @@
 <header>
-    <div class="nav">
-        <div class="brand" routerLink="/">
-            <img src="/assets/img/me.jpg" class="brand-img" />
-            <h1>Chris Cates<span class="no-mobile">, RL Chess with Typescript</span></h1>
-        </div>
+    <div class="social">
+        <a class="article-link easing" routerLink="/">
+            Chess <i class="fas fa-chess"></i>
+        </a>
+        <a class="article-link easing" routerLink="/tictac">
+            Tic Tac <i class="fas fa-square"></i>
+        </a>
     </div>
 
     <a class="mobile-nav-toggle easing" [ngClass]="{'active': this.navActive}" (click)="this.navActive = !this.navActive;">
