@@ -9,6 +9,12 @@ div.board {
     flex-direction: row;
     flex-wrap: wrap;
     margin: auto;
+
+    @media(max-width: $board-size) {
+        width: 320px;
+        height: 320px;
+    }
+
     div.row {
         width: 100%;
         height: calc(100% / 8);

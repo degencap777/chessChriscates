@@ -11,10 +11,20 @@ div.game-info {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    @media(max-width: $board-size) {
+        height: 50px;
+    }
+
     div.game-info-section {
         width: 75px;
         height: 100%;
         border-right: 2px solid $g1;
+
+        @media(max-width: $board-size) {
+            width: 50px;
+        }
+
         &:last-of-type {
             border-right: 2px solid transparent;
         }
@@ -46,6 +56,22 @@ div.game-info {
         img.label-img {
             width: 25px;
             height: 25px;
+        }
+
+        @media(max-width: $board-size) {
+            p.label {
+                top: 0px;
+                left: 0;
+                font-size: 11px;
+                img {
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+            img.label-img {
+                width: 15px;
+                height: 15px;
+            }
         }
     }
 }
