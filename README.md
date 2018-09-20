@@ -16,3 +16,8 @@ yarn
 # Serve the angular app
 ng serve
 ```
+
+### Additional Notes
+
+- MIT Licensed :heart:
+- Learn more about the project at https://chess.chriscates.ca
