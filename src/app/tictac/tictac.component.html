@@ -4,27 +4,36 @@
 
       <div class="header-section">
         <div class="tic-tac-info">
-            <p class="label">Turn</p>
-            <div class="image-wrap easing" [ngClass]="{ 'active': this.turn == 0 }">
+          <p class="label">Turn</p>
+          <div class="image-wrap easing" [ngClass]="{ 'active': this.turn == 0 }">
+            <img src="/assets/img/schoolboyq.gif"/>
+          </div>
+          <div class="image-wrap easing" [ngClass]="{ 'active': this.turn == 1 }">
+            <img src="/assets/img/elonmusk.gif"/>
+          </div>
+        </div>
+    
+          <div class="tic-tac-info">
+            <p class="label">Winner</p>
+            <div class="image-wrap easing" [ngClass]="{ 'active': this.winner == 0 }">
               <img src="/assets/img/schoolboyq.gif"/>
             </div>
-            <div class="image-wrap easing" [ngClass]="{ 'active': this.turn == 1 }">
+            <div class="image-wrap easing" [ngClass]="{ 'active': this.winner == 1 }">
               <img src="/assets/img/elonmusk.gif"/>
             </div>
           </div>
-    
-          <div class="tic-tac-info">
-              <p class="label">Winner</p>
-              <div class="image-wrap easing" [ngClass]="{ 'active': this.winner == 0 }">
-                <img src="/assets/img/schoolboyq.gif"/>
-              </div>
-              <div class="image-wrap easing" [ngClass]="{ 'active': this.winner == 1 }">
-                <img src="/assets/img/elonmusk.gif"/>
-              </div>
-            </div>
+
         </div>
 
         <div class="header-section">
+            <div class="tic-tac-info easing" (click)="this.moveWithAI();">
+                <p class="label">Move</p>
+                <i class="fas fa-robot"></i>
+              </div>
+            <div class="tic-tac-info easing" (click)="this.toggleVectors();">
+              <p class="label">Vectors</p>
+              <i class="fas fa-square-root-alt"></i>
+            </div>
             <a class="tic-tac-button easing" (click)="this.undo();">
               <p class="label">Undo</p>
               <i class="fas fa-undo"></i>
@@ -39,14 +48,15 @@
 
   </div>
   <div class="tic-tac">
-    <div class="row" *ngFor="let row of this.board;">
-      <div class="square easing" *ngFor="let square of row;" (click)="this.selectSquare(square);">
+    <div class="row" *ngFor="let row of this.board; let index = i;">
+      <div class="square easing" *ngFor="let square of row; let index = ii;" (click)="this.selectSquare(square);">
         <div class="image-wrap easing" [ngClass]="{ 'active': square.value == 0 }">
           <img src="/assets/img/schoolboyq.gif"/>
         </div>
         <div class="image-wrap easing" [ngClass]="{ 'active': square.value == 1 }">
           <img src="/assets/img/elonmusk.gif"/>
         </div>
+        <p class="rlabel easing" [ngClass]="{'active': this.showVectors}">R:{{(this.getVector(square) || 0)}}</p>
       </div>
     </div>
   </div>

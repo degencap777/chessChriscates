@@ -57,13 +57,27 @@ div.tic-tac-header {
             justify-content: center;
             margin-right: 15px;
 
+            &.easing {
+                &:hover {
+                    background: $b1;
+                }
+            }
+
             p.label {
                 font-size: 16px;
                 font-weight: bold;
                 position: absolute;
-                left: 5px;
+                left: 0px;
                 top: 0px;
                 z-index: 10;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            i {
+                font-size: 30px;
+                padding-top: 5px;
             }
 
             div.image-wrap {
@@ -111,6 +125,16 @@ div.tic-tac {
             height: 100%;
             border-right: 2px solid black;
             position: relative;
+
+            p.rlabel {
+                font-weight: bold;
+                padding: 5px;
+                opacity: 0;
+                pointer-events: none;
+                &.active {
+                    opacity: 1;
+                }
+            }
 
             &:last-of-type {
                 border-right: none;

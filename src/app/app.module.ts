@@ -5,6 +5,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { KatexModule } from 'ng-katex';
 
 import { ChessService } from './chess.service';
+import { TicService } from './tic.service';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -25,7 +26,10 @@ import { TictacComponent } from './tictac/tictac.component';
       { 'path': 'tictac', 'component': TictacComponent }
     ])
   ],
-  providers: [ChessService],
+  providers: [
+    ChessService,
+    TicService
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
