@@ -32,23 +32,23 @@ export class TictacComponent implements OnInit {
   }
 
   moveWithAI() {
-    if (this.vectors.length === 0) {
-      const optimalVector = this.board[1][1];
-      this.selectSquare(optimalVector);
-    } else {
+    if (this.winner === -1) {
       let highestReward = 0;
       let bestVectors = [];
       
       for (let i = 0; i < this.vectors.length; i++) {
-        if (this.vectors[i]['reward'] <= highestReward) {
+        if (this.vectors[i]['reward'] === highestReward) {
           bestVectors.push(this.vectors[i]);
-        } else {
-          bestVectors = [ this.vectors[i] ];
+        } else if (this.vectors[i]['reward'] > highestReward) {
+          bestVectors = [];
+          bestVectors.push(this.vectors[i]);
           highestReward = this.vectors[i]['reward'];
         }
       }
 
-      const rngVec = bestVectors[Math.floor(Math.random() * bestVectors.length - 1)];
+      console.log(bestVectors.length);
+
+      const rngVec = bestVectors[Math.floor(Math.random() * bestVectors.length )];
       const optimalVector = this.board[rngVec['y']][rngVec['x']];
       this.selectSquare(optimalVector);
     }
@@ -61,6 +61,8 @@ export class TictacComponent implements OnInit {
       this.board[y][x] = { x, y, value: -1 };
       this.lastMove = null;
       this.turn = this.turn === 0 ? 1 : 0;
+      this.winner = -1;
+      this.vectors = this.tic.generateVectors(this.turn, this.board);
     }
   }
 
@@ -83,6 +85,8 @@ export class TictacComponent implements OnInit {
 
       this.board.push(row);
     }
+    
+    this.vectors = this.tic.generateVectors(this.turn, this.board);
   }
 
   selectSquare(square) {
@@ -95,10 +99,6 @@ export class TictacComponent implements OnInit {
       this.checkWinner();
 
       this.vectors = this.tic.generateVectors(this.turn, this.board);
-    
-      this.vectors.forEach(vector => {
-        console.log(`${vector['x']},${vector['y']} Reward: ${vector['reward']}`);
-      });
     }
   }
 
