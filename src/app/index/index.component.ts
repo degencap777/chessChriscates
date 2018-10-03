@@ -42,9 +42,7 @@ export class IndexComponent implements OnInit {
   }
 
   getInfo() {
-    console.log(this.chess.game);
     const history = this.chess.game.history({ verbose: true });
-    
     if (history.length > 0) {
       const historyItem = history.reverse()[0];
       historyItem['time'] = moment().format('h:mm a');
@@ -71,9 +69,6 @@ export class IndexComponent implements OnInit {
       this.render();
     } else if (this.activeSquare !== square) {
       this.activeSquare = square;
-      
-      console.log(moves);
-
       this.actualMoves = moves;
 
       moves = moves.map(move => {
@@ -84,7 +79,6 @@ export class IndexComponent implements OnInit {
           return move;
         }
       });
-  
       this.activeMoves = moves;
     } else {
       this.activeSquare = null;
@@ -109,22 +103,17 @@ export class IndexComponent implements OnInit {
     for (let i = 0; i < squares.length; i = i + 8) {
       rows.push(squares.slice(i, i + 8));
     }
-    
     rows.forEach(row => {
       const notation = [];
-
       row.forEach(square => {
         let status = this.chess.game.get(square);
-        
         if (!status) {
           status = { type: null, color: null };
         }
-
         notation.push({ square, status });
       });
 
       this.display.push(notation);
     });
   }
-
 }
