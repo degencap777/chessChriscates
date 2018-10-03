@@ -47,17 +47,21 @@
       </div>
 
   </div>
-  <div class="tic-tac">
-    <div class="row" *ngFor="let row of this.board; let index = i;">
-      <div class="square easing" *ngFor="let square of row; let index = ii;" (click)="this.selectSquare(square);">
-        <div class="image-wrap easing" [ngClass]="{ 'active': square.value == 0 }">
-          <img src="/assets/img/schoolboyq.gif"/>
+
+  <div class="tic-tac-container">
+    <div class="tic-tac">
+      <div class="row" *ngFor="let row of this.board; let index = i;">
+        <div class="square easing" *ngFor="let square of row; let index = ii;" (click)="this.selectSquare(square);">
+          <div class="image-wrap easing" [ngClass]="{ 'active': square.value == 0 }">
+            <img src="/assets/img/schoolboyq.gif" />
+          </div>
+          <div class="image-wrap easing" [ngClass]="{ 'active': square.value == 1 }">
+            <img src="/assets/img/elonmusk.gif" />
+          </div>
+          <p class="rlabel easing" [ngClass]="{'active': this.showVectors}">R:{{(this.getVector(square) || 0)}}</p>
         </div>
-        <div class="image-wrap easing" [ngClass]="{ 'active': square.value == 1 }">
-          <img src="/assets/img/elonmusk.gif"/>
-        </div>
-        <p class="rlabel easing" [ngClass]="{'active': this.showVectors}">R:{{(this.getVector(square) || 0)}}</p>
       </div>
     </div>
   </div>
+
 </div>
